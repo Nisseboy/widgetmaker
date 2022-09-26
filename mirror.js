@@ -1,17 +1,17 @@
 class Mirror {
-	constructor(id) {
+	constructor(id, mode, header) {
 		this.editor = CodeMirror.fromTextArea(document.getElementById(id), {
 			lineNumbers: true,
 			matchBrackets: true,
-			theme: "one-dark",
-			mode: { name: "text/html", globalVars: true },
-			keyMap: "sublime",
+			theme: 'one-dark',
+			mode: { name: mode, globalVars: true },
+			keyMap: 'sublime',
 			tabSize: 2,
 			autoCloseBrackets: true,
 			autoCloseTags: true,
 			highlightSelectionMatches: true,
 			foldGutter: true,
-			gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+			gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
 			hintOptions: {
 				completeSingle: false,
 				extraKeys: {
@@ -30,7 +30,7 @@ class Mirror {
 				},
 			},
 			extraKeys: {
-				Tab: "emmetExpandAbbreviation",
+				Tab: 'emmetExpandAbbreviation',
 			},
 			emmet: {
 				mark: true,
@@ -39,33 +39,24 @@ class Mirror {
 				preview: true,
 			},
 		});
-		this.editor.on("inputRead", function (editor, input) {
-			if (input.text[0] === ";" || input.text[0] === " ") {
+
+    let headerElement = document.createElement('div');
+    headerElement.className = 'editor-header';
+    headerElement.innerText = header;
+    this.editor.display.wrapper.prepend(headerElement);
+
+		this.editor.on('inputRead', function (editor, input) {
+			if (input.text[0] === ';' || input.text[0] === ' ') {
 				return;
 			}
-			if (editor.options.mode == "text/html") {
+			if (editor.options.mode.name == 'text/html' || editor.options.mode.name == 'css') {
 				return;
 			}
-			if (editor.options.mode == "css")
-				editors[0].editor.execCommand("emmetResetAbbreviation");
+			editor.execCommand('emmetResetAbbreviation');
 			editor.showHint({
 				hint: CodeMirror.hint.auto,
 			});
 		});
-		this.editor.on("change", (a, b) => {
-			if (this.preventNext || !this.currentFile) return;
-			let file = fromPath(this.currentFile);
-			file.tempCode = this.editor.getValue();
-
-			file.saved = file.code == file.tempCode;
-
-			let other = editors[!this.index * 1];
-			if (other.currentFile == this.currentFile) {
-				other.preventNext = true;
-				other.setValue(this.editor.getValue());
-			}
-
-			renderFiles();
-		});
+		this.editor.on('change', (a, b) => {});
 	}
 }

@@ -6,21 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+
+    <link rel="stylesheet" href="./lib/codemirror.css">
+    <link rel="stylesheet" href="lib/one-dark.css">
+    <link rel="stylesheet" href="lib/scroll/simplescrollbars.css">
+    <link rel="stylesheet" href="lib/hint/show-hint.css">
+    <link rel="stylesheet" href="lib/fold/foldgutter.css">
+
+    <link rel="stylesheet" href="lib/@emmetio/codemirror-plugin/dist/emmet.css">
+
+    <script src="lib/codemirror.js"></script>
+
+    <script src="lib/sublime.js" charset="utf-8"></script>
+
+    <script src="lib/syntax-highlighting/css.js" charset="utf-8"></script>
+    <script src="lib/syntax-highlighting/javascript.js" charset="utf-8"></script>
+    <script src="lib/syntax-highlighting/xml.js" charset="utf-8"></script>
+    <script src="lib/syntax-highlighting/htmlmixed.js" charset="utf-8"></script>
+
+    <script src="lib/scroll/simplescrollbars.js" charset="utf-8"></script>
+
+    <script src="lib/edit/matchbrackets.js" charset="utf-8"></script>
+    <script src="lib/edit/closebrackets.js" charset="utf-8"></script>
+    <script src="lib/edit/matchtags.js" charset="utf-8"></script>
+    <script src="lib/edit/closetag.js" charset="utf-8"></script>
+
+    <script src="lib/fold/foldcode.js"></script>
+    <script src="lib/fold/foldgutter.js"></script>
+    <script src="lib/fold/brace-fold.js"></script>
+    <script src="lib/fold/xml-fold.js"></script>
+    <script src="lib/fold/markdown-fold.js"></script>
+    <script src="lib/fold/comment-fold.js"></script>
+    <script src="lib/fold/indent-fold.js"></script>
+
+    <script src="lib/comment/comment.js"></script>
+
+    <script src="lib/search/match-highlighter.js" charset="utf-8"></script>
+
+    <script src="lib/hint/show-hint.js"></script>
+    <script src="lib/hint/javascript-hint.js"></script>
+    <script src="lib/hint/html-hint.js"></script>
+    <script src="lib/hint/css-hint.js"></script>
+    <script src="lib/hint/xml-hint.js"></script>
+
+    <script src="lib/@emmetio/codemirror-plugin/dist/browser.js"></script>
 </head>
 <body>
-    <div class="codeHolder">
-        <div class="paneHolder">
-            <div class="paneHeader">HTML</div>
-            <textarea id="mirrorHTML"></textarea>
+    <div class="editors">
+        <div class="pane">
+            <textarea id="mirror-HTML"></textarea>
         </div>
-        <div class="paneHolder">
-            <div class="paneHeader">JS</div>
-            <textarea id="mirrorJS"></textarea>
+        <div class="pane">
+            <textarea id="mirror-JS"></textarea>
         </div>
-        <div class="paneHolder">
-            <div class="paneHeader">CSS</div>
-            <textarea id="mirrorCSS"></textarea>
+        <div class="pane">
+            <textarea id="mirror-CSS"></textarea>
         </div>
+    </div>
+    <div class="output">
+        <div class="pane">
+            <textarea id="mirror-out"></textarea>
+        </div>
+    </div>
+    <div class="buttons">
+        <button onclick="compile()">Compile</button>
     </div>
     <script src="mirror.js"></script>
     <script src="index.js"></script>
