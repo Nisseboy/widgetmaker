@@ -19,7 +19,7 @@ html, body {
 
 .editors {
     width: 100%;
-    height: calc(80% - 1.5rem);
+    height: calc(60% - 1.5rem);
 
     display: flex;
     justify-content: space-between;
@@ -34,9 +34,16 @@ html, body {
 
 .output {
     width: 100%;
-    height: 20%;
+    height: 40%;
 
     position: absolute;
+    display: flex;
+}
+.frame-out {
+    width: 100%;
+    height: 100%;
+
+    border: 0;
 }
 
 .editor-header {

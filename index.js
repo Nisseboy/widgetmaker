@@ -4,6 +4,7 @@ let mirrors = {
 	css: new Mirror('mirror-CSS', 'css', 'CSS:'),
   out: new Mirror('mirror-out', 'javascript', 'Output:')
 };
+mirrors.out.editor.setOption("readOnly", true);
 
 
 function compile() {
