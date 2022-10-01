@@ -44,6 +44,8 @@ html, body {
     height: 100%;
 
     border: 0;
+
+    background-color: beige;
 }
 
 .editor-header {

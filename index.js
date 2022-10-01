@@ -4,7 +4,7 @@ let mirrors = {
 	css: new Mirror('mirror-CSS', 'css', 'CSS:'),
   out: new Mirror('mirror-out', 'javascript', 'Output:')
 };
-mirrors.out.editor.setOption("readOnly", true);
+mirrors.out.editor.setOption('readOnly', true);
 
 
 function compile() {
@@ -13,6 +13,13 @@ function compile() {
     css: mirrors.css.editor.getValue(),
     js: mirrors.js.editor.getValue(),
   }
+  let data = {
+    js: ''
+  }
 
-  console.log(text);
+  data.js += `let parser = new DOMParser();let doc = parser.parseFromString('${text.html.replaceAll('\n', ' ').replaceAll('"', '\\"')}', 'text/xml');document.body.appendChild(doc.firstChild)`;
+
+
+  let frame = document.getElementsByClassName('frame-out')[0];
+  frame.innerHTML = text.html;
 }
